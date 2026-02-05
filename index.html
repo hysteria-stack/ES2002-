@@ -19,6 +19,10 @@
       padding: 16px;
     }
 
+    .search-form {
+      width: 100%;
+    }
+
     .search {
       width: 100%;
       display: block;
@@ -28,6 +32,7 @@
       padding: 12px 14px;
       font-size: 15px;
       color: #888;
+      border-radius: 12px;
     }
 
     /* Banner */
@@ -143,8 +148,9 @@
 <body>
 
   <div class="header">
-    <input type="text" class="search" placeholder="Search for meal and restaurant…" />
-
+    <form class="search-form" onsubmit="handleSearch(event)">
+      <input type="text" class="search" placeholder="Search for meal and restaurant…" />
+    </form>
   </div>
 
   <div class="banner">CURRY RICE 50% OFF 🍛</div>
@@ -158,13 +164,32 @@
 
   <div class="section">
     <h2>Top Sellers</h2>
+    <div id="cards-container">
+      <div class="card">
+        <img src="images/breadlink.jpg" alt="Breadlink" />
+        <div class="card-body">
+          <div class="title">Breadlink (Tampines)</div>
+          <div class="meta">⭐ 4.8 · 1.5 km · 20:15–20:50</div>
+          <div class="price">$7.50</div>
+        </div>
+      </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1542838132-92c53300491e" />
-      <div class="card-body">
-        <div class="title">Breadlink (Tampines)</div>
-        <div class="meta">⭐ 4.8 · 1.5 km · 20:15–20:50</div>
-        <div class="price">$7.50</div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" />
+        <div class="card-body">
+          <div class="title">Noodle House</div>
+          <div class="meta">⭐ 4.5 · 2 km · 19:30–21:00</div>
+          <div class="price">$6.80</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2" />
+        <div class="card-body">
+          <div class="title">Sushi World</div>
+          <div class="meta">⭐ 4.9 · 3 km · 18:00–22:00</div>
+          <div class="price">$12.00</div>
+        </div>
       </div>
     </div>
   </div>
@@ -177,6 +202,26 @@
     <div class="nav-item">Favorites</div>
     <div class="nav-item">Profile</div>
   </div>
+
+  <script>
+    function handleSearch(event) {
+      event.preventDefault(); // stop form submission
+      const query = document.querySelector('.search').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('#cards-container .card');
+
+      cards.forEach(card => {
+        const title = card.querySelector('.title').textContent.toLowerCase();
+        if (title.includes(query)) {
+          card.style.display = ''; // show matching card
+        } else {
+          card.style.display = 'none'; // hide non-matching card
+        }
+      });
+    }
+
+    // Optional: live search as you type
+    document.querySelector('.search').addEventListener('input', handleSearch);
+  </script>
 
 </body>
 </html>
