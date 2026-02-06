@@ -349,20 +349,15 @@
     });
   }
   
-  document.querySelectorAll('.category').forEach(cat => {
+    document.querySelectorAll('.category').forEach(cat => {
     cat.addEventListener('click', () => {
-      // Get text only, excluding any child elements (like the "New" badge)
-      const categoryName = Array.from(cat.childNodes)
-        .filter(node => node.nodeType === Node.TEXT_NODE) // only text nodes
-        .map(node => node.textContent)
-        .join('')
-        .trim()
-        .toLowerCase();
+      // Remove "New" text and trim
+      const categoryName = cat.textContent.replace('New', '').trim().toLowerCase();
   
       const cards = document.querySelectorAll('#cards-container .card');
   
       cards.forEach(card => {
-        const cardCategory = card.dataset.category.toLowerCase();
+        const cardCategory = (card.dataset.category || '').toLowerCase();
         if (cardCategory === categoryName) {
           card.style.display = '';
         } else {
@@ -372,6 +367,7 @@
     });
   });
 
+
   
   document.querySelector('.search').addEventListener('input', handleSearch);
   </script>
@@ -379,4 +375,5 @@
 
 </body>
 </html>
+
 
