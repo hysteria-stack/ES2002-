@@ -47,29 +47,48 @@
       text-align: center;
     }
 
-    /* Categories */
-    .categories {
-      display: flex;
-      justify-content: space-between;
-      padding: 12px 16px;
-      gap: 10px;
-    }
+.category {
+  flex: 0 0 auto;        
+  background: #d9f3e8;   
+  border-radius: 14px;
+  padding: 10px 12px;
+  text-align: center;
+  font-size: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  scroll-snap-align: start; 
+  min-width: 90px;       
+  position: relative;      
+}
 
-    .category {
-      flex: 1;
-      background: white;
-      border-radius: 14px;
-      padding: 10px 6px;
-      text-align: center;
-      font-size: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    }
+/* New badge */
+.new-badge {
+  position: absolute;
+  bottom: 24px;
+  right: 1px;
+  background: #ff6b6b;  
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 4px;
+  border-radius: 8px;
+}
 
-    .icon {
-      font-size: 22px;
-      margin-bottom: 6px;
-      display: block;
-    }
+.categories-container {
+  overflow-x: auto;
+  padding: 12px 16px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.categories-container::-webkit-scrollbar {
+  display: none;
+}
+
+.categories {
+  display: flex;
+  gap: 10px;
+  scroll-snap-type: x mandatory; 
+}
 
     /* Section */
     .section {
@@ -153,14 +172,28 @@
     </form>
   </div>
 
-  <div class="banner">CURRY RICE 50% OFF 🍛</div>
-
-  <div class="categories">
-    <div class="category"><span class="icon">🏆</span>Award Winning</div>
-    <div class="category"><span class="icon">🛍️</span>Pickup Now</div>
-    <div class="category"><span class="icon">📍</span>Near Me</div>
-    <div class="category"><span class="icon">🔥</span>Top Deals</div>
+  <div class="categories-container">
+    <div class="categories">
+      <!-- New boxes on the left -->
+      <div class="category new-box"><span class="new-badge">New</span>♻️ Thrift Items</div>
+      <div class="category new-box"><span class="new-badge">New</span>💄 Beauty Products</div>
+      <div class="category new-box"><span class="new-badge">New</span>🐾 Pet Essentials</div>
+  
+      <!-- Existing categories -->
+      <div class="category">🏆 Award Winning</div>
+      <div class="category">🛍️ Pickup Now</div>
+      <div class="category">📍 Near Me</div>
+      <div class="category">🔥 Top Deals</div>
+      <div class="category">⭐ Best Reviews</div>
+      <div class="category">💐 Florist</div>
+      <div class="category">🍲 Meals</div>
+      <div class="category">🥗 Plant Based</div>
+      <div class="category">🥐 Pastries</div>
+      <div class="category">🛒 Groceries</div>
+    </div>
   </div>
+
+
 
   <div class="section">
     <h2>Top Sellers</h2>
@@ -175,11 +208,11 @@
       </div>
 
       <div class="card">
-        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" />
+        <img src="images/shellfruits.jpg" alt="ShellFruits" />
         <div class="card-body">
-          <div class="title">Noodle House</div>
-          <div class="meta">⭐ 4.5 · 2 km · 19:30–21:00</div>
-          <div class="price">$6.80</div>
+          <div class="title">Shell Fruits - Pasir Panjang Wholesale Centre</div>
+          <div class="meta">⭐ 4.8 · 2 km · 15:00–18:00</div>
+          <div class="price">$10.00</div>
         </div>
       </div>
 
@@ -225,3 +258,4 @@
 
 </body>
 </html>
+
