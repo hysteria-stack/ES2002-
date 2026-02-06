@@ -267,7 +267,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-category="thrift">
         <img src="images/thriftfind.jpg" alt="Thriftfind - Orchard Road" />
         <div class="card-body">
           <div class="title">Thriftfind - Orchard Road</div>
@@ -276,7 +276,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-category="pet">
         <img src="images/petlove.jpg" alt="PetLove - Bugis Street" />
         <div class="card-body">
           <div class="title">PetLove - Bugis Street</div>
@@ -285,7 +285,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-category="beauty">
         <img src="images/makeupdeluxe.jpg" alt="Makeup Deluxe - Haji Lane" />
         <div class="card-body">
           <div class="title">Makeup Deluxe - Haji Lane</div>
@@ -333,25 +333,45 @@
   </div>
 
   <script>
-    function handleSearch(event) {
-      event.preventDefault(); // stop form submission
-      const query = document.querySelector('.search').value.toLowerCase().trim();
+  function handleSearch(event) {
+    if (event) event.preventDefault(); // stop form submission if called from form
+    const query = document.querySelector('.search').value.toLowerCase().trim();
+    const cards = document.querySelectorAll('#cards-container .card');
+  
+    cards.forEach(card => {
+      const title = card.querySelector('.title').textContent.toLowerCase();
+      if (title.includes(query)) {
+        card.style.display = ''; // show matching card
+      } else {
+        card.style.display = 'none'; // hide non-matching card
+      }
+    });
+  }
+  
+  // Add click events for categories
+  document.querySelectorAll('.category').forEach(cat => {
+    cat.addEventListener('click', () => {
+      const categoryName = cat.textContent.toLowerCase().replace('new', '').trim();
       const cards = document.querySelectorAll('#cards-container .card');
-
+  
       cards.forEach(card => {
-        const title = card.querySelector('.title').textContent.toLowerCase();
-        if (title.includes(query)) {
-          card.style.display = ''; // show matching card
+        const cardCategory = card.dataset.category.toLowerCase();
+        if (cardCategory.includes(categoryName)) {
+          card.style.display = '';
         } else {
-          card.style.display = 'none'; // hide non-matching card
+          card.style.display = 'none';
         }
       });
-    }
-    document.querySelector('.search').addEventListener('input', handleSearch);
+    });
+  });
+  
+  document.querySelector('.search').addEventListener('input', handleSearch);
   </script>
+
 
 </body>
 </html>
+
 
 
 
