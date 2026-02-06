@@ -348,15 +348,21 @@
     });
   }
   
-  // Add click events for categories
   document.querySelectorAll('.category').forEach(cat => {
     cat.addEventListener('click', () => {
-      const categoryName = cat.textContent.toLowerCase().replace('new', '').trim();
+      // Get text only, excluding any child elements (like the "New" badge)
+      const categoryName = Array.from(cat.childNodes)
+        .filter(node => node.nodeType === Node.TEXT_NODE) // only text nodes
+        .map(node => node.textContent)
+        .join('')
+        .trim()
+        .toLowerCase();
+  
       const cards = document.querySelectorAll('#cards-container .card');
   
       cards.forEach(card => {
         const cardCategory = card.dataset.category.toLowerCase();
-        if (cardCategory.includes(categoryName)) {
+        if (cardCategory === categoryName) {
           card.style.display = '';
         } else {
           card.style.display = 'none';
@@ -364,6 +370,7 @@
       });
     });
   });
+
   
   document.querySelector('.search').addEventListener('input', handleSearch);
   </script>
@@ -371,13 +378,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
