@@ -106,15 +106,9 @@ body {
   border-radius: 8px;
   font-style: italic;
   font-size: 14px;
-  color: #555;
+  color: #000;
   margin-top: 6px;
   margin-left: 24px;
-}
-
-
-.address-box{
-  color: #1e9c6d;
-  font-weight: bold;
 }
 
 .total-box {
@@ -183,10 +177,12 @@ body {
       <input type="radio" name="delivery" value="delivery">
       Delivery
     </label>
-    <div class="address-box">
+    <!-- Add id here and make font black -->
+    <div class="address-box" id="address-box">
       123 Orchard Rd, #05-01, Singapore 238888
     </div>
   </div>
+
 
   <div class="total-box">
     <span>Total</span>
@@ -218,5 +214,6 @@ deliveryRadios.forEach(radio => {
 
 </body>
 </html>
+
 
 
