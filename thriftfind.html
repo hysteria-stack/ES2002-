@@ -18,7 +18,7 @@ body {
 .header-img {
   position: relative;
   width: 100%;
-  height: 100px;
+  height: 150px;
   overflow: hidden;
 }
 
@@ -76,44 +76,47 @@ body {
 .products {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
   align-items: start;
 }
 
 .product-box {
   background: white;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  font-size: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  font-size: 11px;
   display: flex;
   flex-direction: column;
 }
 
 .product-box img {
   width: 100%;
-  height:80px
+  height: 60px
   display: block;
   object-fit: cover;
 }
 
 .product-content {
-  padding: 8px;
+  padding: 6px;
 }
 
 .product-title {
   font-weight: 600;
-  margin-bottom: 4px;
+  font-size: 11px;
+  margin-bottom: 2px;
 }
 
 .product-time {
   color: #666;
-  font-size: 11px;
+  font-size: 10px;
+  margin-bottom: 2px;
 }
 
 .price {
-  margin-top: 4px;
+  margin-bottom: 2px;
+  font-size:11px;
   font-weight: 700;
   color: #1e9c6d;
 }
@@ -121,12 +124,12 @@ body {
 .view-btn {
   margin-top: 6px;
   width: 100%;
-  padding: 5px;
+  padding: 4px 0;
   background: #1e9c6d;
   color: white;
   border: none;
-  border-radius: 10px;
-  font-size: 12px;
+  border-radius: 6px;
+  font-size: 11px;
   cursor: pointer;
 }
 
@@ -195,9 +198,8 @@ body {
       <img src="images/thrift1.png">
       <div class="product-content">
         <div class="product-title">Hip Shirt</div>
-        <div class="product-time">Pickup 19:00 – 20:00</div>
+        <div class="product-time">Pickup 19:00 – 20:00 | 36-inch</div>
         <div class="price">$3.00</div>
-        <div class="size">36-inch</div>
         <button class="view-btn">View</button>
       </div>
     </div>
@@ -206,9 +208,8 @@ body {
       <img src="images/thrift2.png">
       <div class="product-content">
         <div class="product-title">Cat-Themed Shirt</div>
-        <div class="product-time">Pickup 19:00 – 20:00</div>
+        <div class="product-time">Pickup 19:00 – 20:00 | 33-inch</div>
         <div class="price">$5.00</div>
-        <div class="size">33-inch</div>
         <button class="view-btn">View</button>
       </div>
     </div>
@@ -280,6 +281,7 @@ function shareStore() {
 
 </body>
 </html>
+
 
 
 
