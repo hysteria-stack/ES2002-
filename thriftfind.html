@@ -82,7 +82,6 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 100%;
 }
 
 .product-box img {
@@ -128,59 +127,6 @@ body {
   cursor: pointer;
 }
 
-.reviews-section {
-  margin-top: 30px;
-}
-
-.reviews-title {
-  font-size: 17px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.reviews-container {
-  max-height: 250px;
-  overflow-y: auto;
-}
-
-.review {
-  background: white;
-  padding: 12px;
-  border-radius: 12px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  font-size: 13px;
-}
-
-.review-header {
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.review-meta {
-  font-size: 11px;
-  color: #888;
-  margin-bottom: 6px;
-}
-</style>
-</head>
-<body>
-
-<div class="header">
-  <button class="back-btn" onclick="window.location.href='index.html'">← Back</button>
-  <div class="top-actions">
-    <button class="icon-btn" onclick="toggleFavorite(this)">♡</button>
-    <button class="icon-btn" onclick="shareStore()">⤴</button>
-  </div>
-</div>
-
-<a id="cart-icon" href="payment.html">
-  🛒
-</a>
-
-<style>
 #cart-icon {
   position: fixed;
   bottom: 16px;
@@ -200,18 +146,18 @@ body {
   transform: scale(1.1);
 }
 </style>
+</head>
+<body>
 
-<script>
-let cartCount = 0; 
-const cartIcon = document.getElementById('cart-icon');
-document.querySelectorAll('.view-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    cartCount++;
-    cartIcon.style.display = 'block';
-    cartIcon.textContent = `🛒 ${cartCount}`;
-  });
-});
-</script>
+<div class="header">
+  <button class="back-btn" onclick="window.location.href='index.html'">← Back</button>
+  <div class="top-actions">
+    <button class="icon-btn" onclick="toggleFavorite(this)">♡</button>
+    <button class="icon-btn" onclick="shareStore()">⤴</button>
+  </div>
+</div>
+
+<a id="cart-icon" href="payment.html">🛒</a>
 
 <div class="content">
   <div class="title">Thriftfind - Orchard Road</div>
@@ -219,7 +165,7 @@ document.querySelectorAll('.view-btn').forEach(btn => {
 
   <div class="products">
     <div class="product-box">
-      <img src="images/thrift1.png">
+      <img src="images/thrift1.png" alt="Hip Shirt">
       <div class="product-content">
         <div class="product-title">Hip Shirt (36-inch)</div>
         <div class="product-time">Pickup 19:00 – 20:00</div>
@@ -229,50 +175,12 @@ document.querySelectorAll('.view-btn').forEach(btn => {
     </div>
 
     <div class="product-box">
-      <img src="images/thrift2.png">
+      <img src="images/thrift2.png" alt="Cat Shirt">
       <div class="product-content">
         <div class="product-title">Cat-Themed Shirt (33-inch)</div>
         <div class="product-time">Pickup 19:00 – 20:00</div>
         <div class="price">$5.00</div>
         <button class="view-btn">Add to Cart</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="reviews-section">
-    <div class="reviews-title">User Reviews</div>
-    <div class="reviews-container">
-      <div class="review">
-        <div class="review-header">
-          <span>Nadia F.</span>
-          <span>⭐ 5.0</span>
-        </div>
-        <div class="review-meta">2 days ago</div>
-        Love the variety. Items were in decent condition.
-      </div>
-      <div class="review">
-        <div class="review-header">
-          <span>Rohan V.</span>
-          <span>⭐ 4.8</span>
-        </div>
-        <div class="review-meta">1 week ago</div>
-        Found some really unique vintage tees. Delivered on same-day.
-      </div>
-      <div class="review">
-        <div class="review-header">
-          <span>Tan A.</span>
-          <span>⭐ 4.9</span>
-        </div>
-        <div class="review-meta">2 weeks ago</div>
-        Great value for money. Wish they had more sizes but overall great experience!
-      </div>
-      <div class="review">
-        <div class="review-header">
-          <span>Leong S.</span>
-          <span>⭐ 5.0</span>
-        </div>
-        <div class="review-meta">1 month ago</div>
-        One of the best thrift stores I've bought from. Definitely recommending to friends.
       </div>
     </div>
   </div>
@@ -282,6 +190,7 @@ document.querySelectorAll('.view-btn').forEach(btn => {
 function toggleFavorite(btn) {
   btn.textContent = btn.textContent === "♡" ? "❤️" : "♡";
 }
+
 function shareStore() {
   if (navigator.share) {
     navigator.share({
@@ -293,13 +202,21 @@ function shareStore() {
     alert("Link copied (demo)");
   }
 }
+
+// Cart functionality
+document.addEventListener("DOMContentLoaded", () => {
+  let cartCount = 0; 
+  const cartIcon = document.getElementById('cart-icon');
+
+  document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      cartCount++;
+      cartIcon.style.display = 'block';
+      cartIcon.textContent = `🛒 ${cartCount}`;
+    });
+  });
+});
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
