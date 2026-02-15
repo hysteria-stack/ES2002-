@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thriftfind</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f6f7f8;
+  color: #222;
+}
+
+/* Header Image */
+.header-img {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.header-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Top Buttons */
+.top-actions {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 10px;
+}
+
+.icon-btn {
+  background: rgba(255,255,255,0.9);
+  border: none;
+  padding: 8px 10px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.back-btn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.content {
+  padding: 16px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.location, .rating {
+  margin-top: 4px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Product Grid */
+.products {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.product-box {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-box img {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+}
+
+.product-content {
+  padding: 10px;
+}
+
+.product-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.product-time {
+  color: #666;
+  font-size: 12px;
+}
+
+.price {
+  margin-top: 6px;
+  font-weight: 700;
+  color: #1e9c6d;
+}
+
+.view-btn {
+  margin-top: 8px;
+  width: 100%;
+  padding: 6px;
+  background: #1e9c6d;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* Reviews */
+.reviews-section {
+  margin-top: 30px;
+}
+
+.reviews-title {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.reviews-container {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.review {
+  background: white;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  font-size: 13px;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.review-meta {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 6px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header-img">
+  <img src="images/thriftfind.jpg">
+
+  <button class="back-btn" onclick="window.location.href='index.html'">← Back</button>
+
+  <div class="top-actions">
+    <button class="icon-btn" onclick="toggleFavorite(this)">♡</button>
+    <button class="icon-btn" onclick="shareStore()">⤴</button>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="title">Thriftfind</div>
+  <div class="location">Orchard Road</div>
+  <div class="rating">⭐ 4.9 · 1.7 km away</div>
+
+  <div class="products">
+
+    <div class="product-box">
+      <img src="images/vintage1.jpg">
+      <div class="product-content">
+        <div class="product-title">Vintage Denim Bundle</div>
+        <div class="product-time">Pickup 19:00 – 20:00</div>
+        <div class="price">$16.00</div>
+        <button class="view-btn">View</button>
+      </div>
+    </div>
+
+    <div class="product-box">
+      <img src="images/vintage2.jpg">
+      <div class="product-content">
+        <div class="product-title">Vintage Denim Bundle</div>
+        <div class="product-time">Pickup 19:00 – 20:00</div>
+        <div class="price">$16.00</div>
+        <button class="view-btn">View</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="reviews-section">
+    <div class="reviews-title">User Reviews</div>
+    <div class="reviews-container">
+
+      <div class="review">
+        <div class="review-header">
+          <span>Amanda T.</span>
+          <span>⭐ 5.0</span>
+        </div>
+        <div class="review-meta">2 days ago</div>
+        Loved the variety in the bundle. Items were in great condition and worth way more than the price.
+      </div>
+
+      <div class="review">
+        <div class="review-header">
+          <span>Jason L.</span>
+          <span>⭐ 4.8</span>
+        </div>
+        <div class="review-meta">1 week ago</div>
+        Found some really unique vintage tees. Pickup was smooth and fast.
+      </div>
+
+      <div class="review">
+        <div class="review-header">
+          <span>Melissa K.</span>
+          <span>⭐ 4.9</span>
+        </div>
+        <div class="review-meta">2 weeks ago</div>
+        Great value for money. Would love if they added more sizes though!
+      </div>
+
+      <div class="review">
+        <div class="review-header">
+          <span>Daniel R.</span>
+          <span>⭐ 5.0</span>
+        </div>
+        <div class="review-meta">1 month ago</div>
+        One of the best thrift bundles I’ve bought. Definitely recommending to friends.
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggleFavorite(btn) {
+  btn.textContent = btn.textContent === "♡" ? "❤️" : "♡";
+}
+
+function shareStore() {
+  if (navigator.share) {
+    navigator.share({
+      title: "Thriftfind",
+      text: "Check out this thrift store!",
+      url: window.location.href
+    });
+  } else {
+    alert("Link copied (demo)");
+  }
+}
+</script>
+
+</body>
+</html>
