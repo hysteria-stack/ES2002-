@@ -166,7 +166,7 @@ body {
 #cart-icon {
   position: fixed;
   bottom: 16px;
-  left: 16px;
+  right: 16px;
   background: #1e9c6d;
   color: white;
   padding: 10px 14px;
@@ -184,6 +184,12 @@ body {
 }
 #cart-icon:hover {
   transform: scale(1.1) translateY(0);
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
 }
 
 </style>
@@ -290,13 +296,19 @@ document.addEventListener("DOMContentLoaded", () => {
       cartCount++;
       cartIcon.textContent = `🛒 ${cartCount}`;
       cartIcon.classList.add('show');
+      cartIcon.style.animation = 'pop 0.3s ease';
+      cartIcon.addEventListener('animationend', () => {
+        cartIcon.style.animation = '';
+      }, { once: true });
     });
   });
 });
+
 </script>
 
 </body>
 </html>
+
 
 
 
