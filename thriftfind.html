@@ -176,6 +176,43 @@ body {
   </div>
 </div>
 
+<a id="cart-icon" href="payment.html">
+  🛒
+</a>
+
+<style>
+#cart-icon {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  background: #1e9c6d;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 50%;
+  font-size: 24px;
+  text-decoration: none;
+  display: none; 
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 1000;
+  transition: transform 0.2s;
+}
+#cart-icon:hover {
+  transform: scale(1.1);
+}
+</style>
+
+<script>
+let cartCount = 0; 
+const cartIcon = document.getElementById('cart-icon');
+document.querySelectorAll('.view-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    cartCount++;
+    cartIcon.style.display = 'block';
+    cartIcon.textContent = `🛒 ${cartCount}`;
+  });
+});
+</script>
+
 <div class="content">
   <div class="title">Thriftfind - Orchard Road</div>
   <div class="rating">⭐ 4.9 · 1.7 km away</div>
@@ -187,7 +224,7 @@ body {
         <div class="product-title">Hip Shirt (36-inch)</div>
         <div class="product-time">Pickup 19:00 – 20:00</div>
         <div class="price">$3.00</div>
-        <button class="view-btn">View</button>
+        <button class="view-btn">Add to Cart</button>
       </div>
     </div>
 
@@ -197,7 +234,7 @@ body {
         <div class="product-title">Cat-Themed Shirt (33-inch)</div>
         <div class="product-time">Pickup 19:00 – 20:00</div>
         <div class="price">$5.00</div>
-        <button class="view-btn">View</button>
+        <button class="view-btn">Add to Cart</button>
       </div>
     </div>
   </div>
@@ -260,6 +297,7 @@ function shareStore() {
 
 </body>
 </html>
+
 
 
 
