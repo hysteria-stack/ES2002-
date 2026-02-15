@@ -1,76 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yindii WebApp</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #f6f7f8;
-      color: #222;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Yindii WebApp</title>
 
-    .header {
-      background: linear-gradient(180deg, #4fd1a5, #6bd9b6);
-      padding: 16px;
-    }
+<style>
+* { box-sizing: border-box; }
 
-    .search-form {
-      width: 100%;
-    }
-
-    .search {
-      width: 100%;
-      display: block;
-      border: none;
-      outline: none;
-      background: white;
-      padding: 12px 14px;
-      font-size: 15px;
-      color: #888;
-      border-radius: 12px;
-    }
-
-    .banner {
-      margin: 16px;
-      background: #2f9e77;
-      color: white;
-      border-radius: 16px;
-      padding: 20px;
-      font-size: 22px;
-      font-weight: 700;
-      text-align: center;
-    }
-
-.category {
-  flex: 0 0 auto;        
-  background: #d9f3e8;   
-  border-radius: 14px;
-  padding: 10px 12px;
-  text-align: center;
-  font-size: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-  scroll-snap-align: start; 
-  min-width: 90px;       
-  position: relative;
-  cursor: pointer;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f6f7f8;
+  color: #222;
 }
 
+.header {
+  background: linear-gradient(180deg, #4fd1a5, #6bd9b6);
+  padding: 16px;
+}
 
-.new-badge {
-  position: absolute;
-  bottom: 24px;
-  right: 1px;
-  background: #ff6b6b;  
-  color: white;
-  font-size: 10px;
-  font-weight: bold;
-  padding: 2px 4px;
-  border-radius: 8px;
-  pointer-events: none;
+.search {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: white;
+  padding: 12px 14px;
+  font-size: 15px;
+  border-radius: 12px;
 }
 
 .categories-container {
@@ -80,330 +37,213 @@
   scrollbar-width: none;
 }
 
-.categories-container::-webkit-scrollbar {
-  display: none;
-}
+.categories-container::-webkit-scrollbar { display: none; }
 
 .categories {
   display: flex;
   gap: 10px;
-  scroll-snap-type: x mandatory; 
 }
 
-   #cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 12px;
-    overflow-y: auto;
-    max-height: 400px;
-    padding: 12px;
-  }
-  
-  #cards-container::-webkit-scrollbar {
-    display: none;
-  }
-  
-  #cards-container {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  
-  .card {
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .card img {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-  }
-  
-  .card-body {
-    padding: 10px;
-    font-size: 13px;
-  }
-  
-  .title {
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  
-  .meta {
-    color: #666;
-    margin-bottom: 4px;
-  }
-  
-  .price {
-    font-weight: 700;
-    color: #1e9c6d;
-  }
+.category {
+  flex: 0 0 auto;
+  background: #d9f3e8;
+  border-radius: 14px;
+  padding: 10px 12px;
+  text-align: center;
+  font-size: 12px;
+  min-width: 90px;
+  position: relative;
+  cursor: pointer;
+}
 
+.new-badge {
+  position: absolute;
+  bottom: 24px;
+  right: 1px;
+  background: #ff6b6b;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 4px;
+  border-radius: 8px;
+  pointer-events: none;
+}
 
-    .section {
-      padding: 0 16px;
-      margin-top: 10px;
-    }
+.section {
+  padding: 0 16px;
+  margin-top: 10px;
+}
 
-    .section h2 {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
+.section h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
 
-    .card {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      margin-bottom: 16px;
-    }
+#cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  padding: 12px;
+}
 
-    .card img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-    }
+.card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
 
-    .card-body {
-      padding: 12px;
-    }
+.card.clickable { cursor: pointer; }
 
-    .title {
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
+.card.clickable:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
 
-    .meta {
-      font-size: 13px;
-      color: #666;
-    }
+.card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
 
-    .price {
-      font-weight: 700;
-      color: #1e9c6d;
-      margin-top: 6px;
-    }
+.card-body {
+  padding: 12px;
+  font-size: 13px;
+}
 
-    /* Bottom Nav */
-    .nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: white;
-      border-top: 1px solid #ddd;
-      display: flex;
-      justify-content: space-around;
-      padding: 10px 0;
-      font-size: 12px;
-    }
+.title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
 
-    .nav-item {
-      text-align: center;
-      color: #666;
-    }
+.meta {
+  font-size: 13px;
+  color: #666;
+}
 
-    .nav-item.active {
-      color: #1e9c6d;
-      font-weight: 600;
-    }
+.price {
+  font-weight: 700;
+  color: #1e9c6d;
+  margin-top: 6px;
+}
 
-    .spacer {
-      height: 70px;
-    }
-  </style>
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  font-size: 12px;
+}
+
+.nav-item {
+  text-align: center;
+  color: #666;
+}
+
+.nav-item.active {
+  color: #1e9c6d;
+  font-weight: 600;
+}
+
+.spacer { height: 70px; }
+</style>
 </head>
+
 <body>
 
-  <div class="header">
-    <form class="search-form" onsubmit="handleSearch(event)">
-      <input type="text" class="search" placeholder="Search for meal and restaurant…" />
-    </form>
-  </div>
+<div class="header">
+  <form onsubmit="handleSearch(event)">
+    <input type="text" class="search" placeholder="Search for meal and restaurant…" />
+  </form>
+</div>
 
-  <div class="categories-container">
-    <div class="categories">
-      
-      <div class="category new-box"><span class="new-badge">New</span>♻️ Thrift Items</div>
-      <div class="category new-box"><span class="new-badge">New</span>💄 Beauty Products</div>
-      <div class="category new-box"><span class="new-badge">New</span>🐾 Pet Essentials</div>
-  
-      <!-- Existing categories -->
-      <div class="category">🏆 Award Winning</div>
-      <div class="category">🛍️ Pickup Now</div>
-      <div class="category">📍 Near Me</div>
-      <div class="category">🔥 Top Deals</div>
-      <div class="category">⭐ Best Reviews</div>
-      <div class="category">💐 Florist</div>
-      <div class="category">🍲 Meals</div>
-      <div class="category">🥗 Plant Based</div>
-      <div class="category">🥐 Pastries</div>
-      <div class="category">🛒 Groceries</div>
-    </div>
+<div class="categories-container">
+  <div class="categories">
+    <div class="category new-box"><span class="new-badge">New</span>♻️ Thrift Items</div>
+    <div class="category new-box"><span class="new-badge">New</span>💄 Beauty Products</div>
+    <div class="category new-box"><span class="new-badge">New</span>🐾 Pet Essentials</div>
+    <div class="category">🏆 Award Winning</div>
+    <div class="category">🛍️ Pickup Now</div>
+    <div class="category">📍 Near Me</div>
+    <div class="category">🔥 Top Deals</div>
+    <div class="category">⭐ Best Reviews</div>
+    <div class="category">💐 Florist</div>
+    <div class="category">🍲 Meals</div>
+    <div class="category">🥗 Plant Based</div>
+    <div class="category">🥐 Pastries</div>
+    <div class="category">🛒 Groceries</div>
   </div>
+</div>
 
-  <div class="section">
-    <h2>Top Sellers</h2>
-    <div id="cards-container">
-      <div class="card">
-        <img src="images/breadlink.jpg" alt="Breadlink" />
-        <div class="card-body">
-          <div class="title">Breadlink (Tampines)</div>
-          <div class="meta">
-            <span class="rating-distance">⭐ 4.8 · 1.5 km</span><br>
-            <span class="timing">🕗 20:15–20:50</span>
-          </div>
-          <div class="price">$7.50</div>
-        </div>
-      </div>
-  
-      <div class="card">
-        <img src="images/proofer.jpg" alt="Proofer - Clementi" />
-        <div class="card-body">
-          <div class="title">Proofer - Clementi</div>
-          <div class="meta">
-            <span class="rating-distance">⭐ 4.8 · 2.7 km</span><br>
-            <span class="timing">🕗 19:00–20:00</span>
-          </div>
-          <div class="price">$12.75</div>
-        </div>
-      </div>
-      
-      <a href="thriftfind.html" style="text-decoration: none; color: inherit;">
-        <div class="card" data-category="♻️ Thrift Items">
-          <img src="images/thriftfind.jpg" alt="Thriftfind - Orchard Road" />
-          <div class="card-body">
-            <div class="title">Thriftfind - Orchard Road</div>
-            <div class="meta">
-              <span class="rating-distance">⭐ 4.9 · 1.7 km</span><br>
-              <span class="timing">🕗 19:00–20:00</span>
-            </div>
-            <div class="price">$16.00</div>
-          </div>
-        </div>
-      </a>
-      
-      <div class="card" data-category="🐾 Pet Essentials">
-        <img src="images/petlove.jpg" alt="PetLove - Bugis Street" />
-        <div class="card-body">
-          <div class="title">PetLove - Bugis Street</div>
-          <div class="meta">
-            <span class="rating-distance">⭐ 4.7 · 2.7 km</span><br>
-            <span class="timing">🕗 16:00–20:00</span>
-          </div>
-          <div class="price">$12.00</div>
-        </div>
-      </div>
-  
-      <div class="card" data-category="💄 Beauty Products">
-        <img src="images/makeupdeluxe.jpg" alt="Makeup Deluxe - Haji Lane" />
-        <div class="card-body">
-          <div class="title">Makeup Deluxe - Punggol</div>
-          <div class="meta">
-            <span class="rating-distance">⭐ 5.0 · 1.1 km</span><br>
-            <span class="timing">🕗 16:00–20:30</span>
-          </div>
-          <div class="price">$21.00</div>
-        </div>
-      </div>
-  
-      <div class="card">
-        <img src="images/hundredgrains.jpg" alt="Hundred Grains - ARC" />
-        <div class="card-body">
-          <div class="title">Hundred Grains - ARC</div>
-          <div class="meta">
-            <span class="rating-distance">⭐ - · 3.6 km</span><br>
-            <span class="timing">🕗 20:30–21:00</span>
-          </div>
-          <div class="price">$7.50</div>
-        </div>
-      </div>
-  
-      <div class="card">
-        <img src="images/shellfruits.jpg" alt="ShellFruits" />
-        <div class="card-body">
-          <div class="title">Shell Fruits - Pasir Panjang Wholesale Centre</div>
-          <div class="meta">
-            <span class="rating-distance">⭐ 4.8 · 2 km</span><br>
-            <span class="timing">🕗 15:00–18:00</span>
-          </div>
-          <div class="price">$10.00</div>
-        </div>
-      </div>
-  
-      <div class="card">
-        <img src="images/leclair.jpg" alt="L'éclair Pâtisserie" />
-        <div class="card-body">
-          <div class="title">L'éclair Pâtisserie</div>
-          <div class="meta">
-            <span class="rating-distance">⭐ 4.7 · 3 km</span><br>
-            <span class="timing">🕗 17:00–17:45</span>
-          </div>
-          <div class="price">$18.50</div>
-        </div>
+<div class="section">
+  <h2>Top Sellers</h2>
+  <div id="cards-container">
+
+    <div class="card">
+      <img src="images/breadlink.jpg" />
+      <div class="card-body">
+        <div class="title">Breadlink (Tampines)</div>
+        <div class="meta">⭐ 4.8 · 1.5 km<br>🕗 20:15–20:50</div>
+        <div class="price">$7.50</div>
       </div>
     </div>
+
+    <div class="card">
+      <img src="images/proofer.jpg" />
+      <div class="card-body">
+        <div class="title">Proofer - Clementi</div>
+        <div class="meta">⭐ 4.8 · 2.7 km<br>🕗 19:00–20:00</div>
+        <div class="price">$12.75</div>
+      </div>
+    </div>
+
+    <div class="card" data-category="♻️ Thrift Items" data-link="thriftfind.html">
+      <img src="images/thriftfind.jpg" />
+      <div class="card-body">
+        <div class="title">Thriftfind - Orchard Road</div>
+        <div class="meta">⭐ 4.9 · 1.7 km<br>🕗 19:00–20:00</div>
+        <div class="price">$16.00</div>
+      </div>
+    </div>
+
   </div>
+</div>
 
+<div class="spacer"></div>
 
-  <div class="spacer"></div>
+<div class="nav">
+  <div class="nav-item active">Explore</div>
+  <div class="nav-item">Orders</div>
+  <div class="nav-item">Favorites</div>
+  <div class="nav-item">Profile</div>
+</div>
 
-  <div class="nav">
-    <div class="nav-item active">Explore</div>
-    <div class="nav-item">Orders</div>
-    <div class="nav-item">Favorites</div>
-    <div class="nav-item">Profile</div>
-  </div>
-
-  <script>
-  function handleSearch(event) {
-    if (event) event.preventDefault(); // stop form submission if called from form
-    const query = document.querySelector('.search').value.toLowerCase().trim();
-    const cards = document.querySelectorAll('#cards-container .card');
-  
-    cards.forEach(card => {
-      const title = card.querySelector('.title').textContent.toLowerCase();
-      if (title.includes(query)) {
-        card.style.display = ''; // show matching card
-      } else {
-        card.style.display = 'none'; // hide non-matching card
-      }
-    });
-  }
-  
-    document.querySelectorAll('.category').forEach(cat => {
-    cat.addEventListener('click', () => {
-      // Remove "New" text and trim
-      const categoryName = cat.textContent.replace('New', '').trim().toLowerCase();
-  
-      const cards = document.querySelectorAll('#cards-container .card');
-  
-      cards.forEach(card => {
-        const cardCategory = (card.dataset.category || '').toLowerCase();
-        if (cardCategory === categoryName) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
+<script>
+function handleSearch(event) {
+  if (event) event.preventDefault();
+  const query = document.querySelector('.search').value.toLowerCase().trim();
+  const cards = document.querySelectorAll('#cards-container .card');
+  cards.forEach(card => {
+    const title = card.querySelector('.title').textContent.toLowerCase();
+    card.style.display = title.includes(query) ? '' : 'none';
   });
+}
 
-
-  
-  document.querySelector('.search').addEventListener('input', handleSearch);
-  </script>
-
+document.querySelectorAll('.card[data-link]').forEach(card => {
+  card.classList.add('clickable');
+  card.addEventListener('click', () => {
+    window.location.href = card.dataset.link;
+  });
+});
+</script>
 
 </body>
 </html>
-
-
-
-
-
-
