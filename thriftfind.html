@@ -167,23 +167,43 @@ body {
   position: fixed;
   bottom: 16px;
   right: 16px;
-  background: #1e9c6d;
+  background: #6bd9b6;
   color: white;
-  padding: 10px 14px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 24px;
   text-decoration: none;
   opacity: 0;
-  transform: scale(0.5) translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: scale(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, opacity 0.3s ease;
   z-index: 1000;
 }
+
 #cart-icon.show {
   opacity: 1;
-  transform: scale(1) translateY(0);
+  transform: scale(1);
 }
-#cart-icon:hover {
-  transform: scale(1.1) translateY(0);
+
+#cart-count {
+  background: red;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  animation: pop 0.3s ease;
 }
 
 @keyframes pop {
@@ -204,7 +224,9 @@ body {
   </div>
 </div>
 
-<a id="cart-icon" href="payment.html">🛒</a>
+<a id="cart-icon" href="payment.html">
+  🛒 <span id="cart-count">0</span>
+</a>
 
 <div class="content">
   <div class="title">Thriftfind - Orchard Road</div>
@@ -290,24 +312,25 @@ function shareStore() {
 document.addEventListener("DOMContentLoaded", () => {
   let cartCount = 0; 
   const cartIcon = document.getElementById('cart-icon');
+  const cartNumber = document.getElementById('cart-count');
 
   document.querySelectorAll('.view-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       cartCount++;
-      cartIcon.textContent = `🛒 ${cartCount}`;
+      cartNumber.textContent = cartCount;
       cartIcon.classList.add('show');
-      cartIcon.style.animation = 'pop 0.3s ease';
-      cartIcon.addEventListener('animationend', () => {
-        cartIcon.style.animation = '';
+      cartNumber.style.animation = 'pop 0.3s ease';
+      cartNumber.addEventListener('animationend', () => {
+        cartNumber.style.animation = '';
       }, { once: true });
     });
   });
 });
-
 </script>
 
 </body>
 </html>
+
 
 
 
