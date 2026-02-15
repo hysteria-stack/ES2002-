@@ -100,6 +100,33 @@ body {
   cursor: pointer;
 }
 
+.address-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.address-box .tick {
+  color: #1e9c6d;
+  font-weight: bold;
+}
+
+.total-box {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  padding: 12px 16px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 16px;
+  color: #1e9c6d;
+}
+
 .place-order {
   margin-top: 24px;
   width: 100%;
@@ -127,7 +154,6 @@ body {
 </div>
 
 <div class="content">
-  <!-- Items -->
   <div class="item-box">
     <img src="images/thrift1.png" alt="Hip Shirt">
     <div class="item-details">
@@ -153,7 +179,16 @@ body {
     <label>
       <input type="radio" name="delivery" value="delivery">
       Delivery
+      <div class="address-box">
+        <span class="tick">✔</span>
+        <span>123 Orchard Rd, #05-01, Singapore 238888</span>
+      </div>
     </label>
+  </div>
+
+  <div class="total-box">
+    <span>Total</span>
+    <span>$8.00</span>
   </div>
 
   <button class="place-order" onclick="placeOrder()">Place Order</button>
@@ -161,10 +196,9 @@ body {
 
 <script>
 function placeOrder() {
-  alert(`Order placed!`);
+  alert('Order placed successfully!');
 }
 </script>
 
 </body>
 </html>
-
