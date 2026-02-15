@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thriftfind - Payment Confirmation</title>
+<title>Payment Confirmation</title>
 <style>
 * { box-sizing: border-box; }
 
@@ -144,7 +144,6 @@ body {
     </div>
   </div>
 
-  <!-- Delivery / Pickup -->
   <div class="delivery-options">
     <h3>Select Delivery Option</h3>
     <label>
@@ -157,16 +156,15 @@ body {
     </label>
   </div>
 
-  <!-- Place Order -->
   <button class="place-order" onclick="placeOrder()">Place Order</button>
 </div>
 
 <script>
 function placeOrder() {
-  const option = document.querySelector('input[name="delivery"]:checked').value;
-  alert(`Order placed! Option: ${option}`);
+  alert(`Order placed!`);
 }
 </script>
 
 </body>
 </html>
+
