@@ -184,64 +184,121 @@ body {
 </div>
 
 <div class="section">
-  <h2>Top Sellers</h2>
-  <div id="cards-container">
+<h2>Top Sellers</h2>
 
-    <div class="card">
-      <img src="images/breadlink.jpg" />
-      <div class="card-body">
-        <div class="title">Breadlink (Tampines)</div>
-        <div class="meta">⭐ 4.8 · 1.5 km<br>🕗 20:15–20:50</div>
-        <div class="price">$7.50</div>
-      </div>
-    </div>
+<div id="cards-container">
 
-    <div class="card">
-      <img src="images/proofer.jpg" />
-      <div class="card-body">
-        <div class="title">Proofer - Clementi</div>
-        <div class="meta">⭐ 4.8 · 2.7 km<br>🕗 19:00–20:00</div>
-        <div class="price">$12.75</div>
-      </div>
-    </div>
+<div class="card">
+<img src="images/breadlink.jpg" />
+<div class="card-body">
+<div class="title">Breadlink (Tampines)</div>
+<div class="meta">⭐ 4.8 · 1.5 km<br>🕗 20:15–20:50</div>
+<div class="price">$7.50</div>
+</div>
+</div>
 
-    <div class="card" data-category="♻️ Thrift Items" data-link="thriftfind.html">
-      <img src="images/thriftfind.jpg" />
-      <div class="card-body">
-        <div class="title">Thriftfind - Orchard Road</div>
-        <div class="meta">⭐ 4.9 · 1.7 km<br>🕗 19:00–20:00</div>
-        <div class="price">$16.00</div>
-      </div>
-    </div>
+<div class="card">
+<img src="images/proofer.jpg" />
+<div class="card-body">
+<div class="title">Proofer - Clementi</div>
+<div class="meta">⭐ 4.8 · 2.7 km<br>🕗 19:00–20:00</div>
+<div class="price">$12.75</div>
+</div>
+</div>
 
-  </div>
+<div class="card" data-category="♻️ Thrift Items" data-link="thriftfind.html">
+<img src="images/thriftfind.jpg" />
+<div class="card-body">
+<div class="title">Thriftfind - Orchard Road</div>
+<div class="meta">⭐ 4.9 · 1.7 km<br>🕗 19:00–20:00</div>
+<div class="price">$16.00</div>
+</div>
+</div>
+
+<div class="card" data-category="🐾 Pet Essentials">
+<img src="images/petlove.jpg" />
+<div class="card-body">
+<div class="title">PetLove - Bugis Street</div>
+<div class="meta">⭐ 4.7 · 2.7 km<br>🕗 16:00–20:00</div>
+<div class="price">$12.00</div>
+</div>
+</div>
+
+<div class="card" data-category="💄 Beauty Products">
+<img src="images/makeupdeluxe.jpg" />
+<div class="card-body">
+<div class="title">Makeup Deluxe - Punggol</div>
+<div class="meta">⭐ 5.0 · 1.1 km<br>🕗 16:00–20:30</div>
+<div class="price">$21.00</div>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hundredgrains.jpg" />
+<div class="card-body">
+<div class="title">Hundred Grains - ARC</div>
+<div class="meta">⭐ - · 3.6 km<br>🕗 20:30–21:00</div>
+<div class="price">$7.50</div>
+</div>
+</div>
+
+<div class="card">
+<img src="images/shellfruits.jpg" />
+<div class="card-body">
+<div class="title">Shell Fruits - Pasir Panjang Wholesale Centre</div>
+<div class="meta">⭐ 4.8 · 2 km<br>🕗 15:00–18:00</div>
+<div class="price">$10.00</div>
+</div>
+</div>
+
+<div class="card">
+<img src="images/leclair.jpg" />
+<div class="card-body">
+<div class="title">L'éclair Pâtisserie</div>
+<div class="meta">⭐ 4.7 · 3 km<br>🕗 17:00–17:45</div>
+<div class="price">$18.50</div>
+</div>
+</div>
+
+</div>
 </div>
 
 <div class="spacer"></div>
 
 <div class="nav">
-  <div class="nav-item active">Explore</div>
-  <div class="nav-item">Orders</div>
-  <div class="nav-item">Favorites</div>
-  <div class="nav-item">Profile</div>
+<div class="nav-item active">Explore</div>
+<div class="nav-item">Orders</div>
+<div class="nav-item">Favorites</div>
+<div class="nav-item">Profile</div>
 </div>
 
 <script>
 function handleSearch(event) {
-  if (event) event.preventDefault();
-  const query = document.querySelector('.search').value.toLowerCase().trim();
-  const cards = document.querySelectorAll('#cards-container .card');
-  cards.forEach(card => {
-    const title = card.querySelector('.title').textContent.toLowerCase();
-    card.style.display = title.includes(query) ? '' : 'none';
-  });
+if (event) event.preventDefault();
+const query = document.querySelector('.search').value.toLowerCase().trim();
+const cards = document.querySelectorAll('#cards-container .card');
+cards.forEach(card => {
+const title = card.querySelector('.title').textContent.toLowerCase();
+card.style.display = title.includes(query) ? '' : 'none';
+});
 }
 
+document.querySelectorAll('.category').forEach(cat => {
+cat.addEventListener('click', () => {
+const categoryName = cat.textContent.replace('New', '').trim().toLowerCase();
+const cards = document.querySelectorAll('#cards-container .card');
+cards.forEach(card => {
+const cardCategory = (card.dataset.category || '').toLowerCase();
+card.style.display = cardCategory === categoryName ? '' : 'none';
+});
+});
+});
+
 document.querySelectorAll('.card[data-link]').forEach(card => {
-  card.classList.add('clickable');
-  card.addEventListener('click', () => {
-    window.location.href = card.dataset.link;
-  });
+card.classList.add('clickable');
+card.addEventListener('click', () => {
+window.location.href = card.dataset.link;
+});
 });
 </script>
 
