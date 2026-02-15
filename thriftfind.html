@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thriftfind</title>
-
 <style>
 * { box-sizing: border-box; }
 
@@ -16,26 +15,10 @@ body {
 }
 
 .header {
+  position: relative;
   background: linear-gradient(180deg, #4fd1a5, #6bd9b6);
   padding: 16px;
-}
-
-/* Top Buttons */
-.top-actions {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  display: flex;
-  gap: 10px;
-}
-
-.icon-btn {
-  background: rgba(255,255,255,0.9);
-  border: none;
-  padding: 8px 10px;
-  border-radius: 50%;
-  font-size: 16px;
-  cursor: pointer;
+  height: 60px;
 }
 
 .back-btn {
@@ -47,6 +30,23 @@ body {
   padding: 8px 12px;
   border-radius: 20px;
   font-size: 14px;
+  cursor: pointer;
+}
+
+.top-actions {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.icon-btn {
+  background: rgba(255,255,255,0.9);
+  border: none;
+  padding: 6px 8px;
+  border-radius: 50%;
+  font-size: 16px;
   cursor: pointer;
 }
 
@@ -66,11 +66,11 @@ body {
 }
 
 .products {
-  margin-top: 20px;
+  margin-top: 16px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
-  align-items: start;
+  justify-items: start;
 }
 
 .product-box {
@@ -81,13 +81,16 @@ body {
   font-size: 11px;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 100%;
 }
 
 .product-box img {
   width: 100%;
   height: 60px;
+  object-fit: contain;
+  background: #f6f7f8;
   display: block;
-  object-fit: cover;
 }
 
 .product-content {
@@ -108,7 +111,7 @@ body {
 
 .price {
   margin-bottom: 2px;
-  font-size:11px;
+  font-size: 11px;
   font-weight: 700;
   color: #1e9c6d;
 }
@@ -125,7 +128,6 @@ body {
   cursor: pointer;
 }
 
-/* Reviews */
 .reviews-section {
   margin-top: 30px;
 }
@@ -164,14 +166,10 @@ body {
 }
 </style>
 </head>
-
 <body>
 
-<div class="header-img">
-  <img src="images/thriftfind.jpg">
-
+<div class="header">
   <button class="back-btn" onclick="window.location.href='index.html'">← Back</button>
-
   <div class="top-actions">
     <button class="icon-btn" onclick="toggleFavorite(this)">♡</button>
     <button class="icon-btn" onclick="shareStore()">⤴</button>
@@ -179,13 +177,11 @@ body {
 </div>
 
 <div class="content">
-
   <div class="title">Thriftfind</div>
   <div class="location">Orchard Road</div>
   <div class="rating">⭐ 4.9 · 1.7 km away</div>
 
   <div class="products">
-
     <div class="product-box">
       <img src="images/thrift1.png">
       <div class="product-content">
@@ -205,13 +201,11 @@ body {
         <button class="view-btn">View</button>
       </div>
     </div>
-
   </div>
 
   <div class="reviews-section">
     <div class="reviews-title">User Reviews</div>
     <div class="reviews-container">
-
       <div class="review">
         <div class="review-header">
           <span>Nadia F.</span>
@@ -220,7 +214,6 @@ body {
         <div class="review-meta">2 days ago</div>
         Love the variety. Items were in decent condition.
       </div>
-
       <div class="review">
         <div class="review-header">
           <span>Rohan V.</span>
@@ -229,7 +222,6 @@ body {
         <div class="review-meta">1 week ago</div>
         Found some really unique vintage tees. Delivered on same-day.
       </div>
-
       <div class="review">
         <div class="review-header">
           <span>Tan A.</span>
@@ -238,7 +230,6 @@ body {
         <div class="review-meta">2 weeks ago</div>
         Great value for money. Wish they had more sizes but overall great experience!
       </div>
-
       <div class="review">
         <div class="review-header">
           <span>Leong S.</span>
@@ -247,17 +238,14 @@ body {
         <div class="review-meta">1 month ago</div>
         One of the best thrift stores I've bought from. Definitely recommending to friends.
       </div>
-
     </div>
   </div>
-
 </div>
 
 <script>
 function toggleFavorite(btn) {
   btn.textContent = btn.textContent === "♡" ? "❤️" : "♡";
 }
-
 function shareStore() {
   if (navigator.share) {
     navigator.share({
@@ -273,11 +261,3 @@ function shareStore() {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
