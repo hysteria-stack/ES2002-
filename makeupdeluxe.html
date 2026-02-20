@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Makeup Deluxe - Punggol</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f6f7f8;
+  color: #222;
+}
+
+.header {
+  position: relative;
+  background: linear-gradient(180deg, #4fd1a5, #6bd9b6);
+  padding: 16px;
+  height: 80px;
+}
+
+.back-btn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.top-actions {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.icon-btn {
+  background: rgba(255,255,255,0.9);
+  border: none;
+  padding: 6px 8px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.content {
+  padding: 16px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.rating {
+  margin-top: 4px;
+  color: #666;
+  font-size: 14px;
+}
+
+.products {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  justify-items: start;
+}
+
+.product-box {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  font-size: 11px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.product-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #f6f7f8;
+  display: block;
+}
+
+.product-content {
+  padding: 6px;
+}
+
+.product-title {
+  font-weight: 600;
+  font-size: 11px;
+  margin-bottom: 2px;
+}
+
+.product-time {
+  color: #666;
+  font-size: 10px;
+  margin-bottom: 2px;
+}
+
+.price {
+  margin-bottom: 2px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1e9c6d;
+}
+
+.view-btn {
+  margin-top: 6px;
+  width: 100%;
+  padding: 4px 0;
+  background: #1e9c6d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.reviews-section {
+  margin-top: 30px;
+}
+
+.reviews-title {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.reviews-container {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.review {
+  background: white;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  font-size: 13px;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.review-meta {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+#cart-icon {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background: #6bd9b6;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  text-decoration: none;
+  opacity: 0;
+  transform: scale(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 1000;
+}
+
+#cart-icon.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#cart-count {
+  background: red;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <button class="back-btn" onclick="window.location.href='index.html'">← Back</button>
+  <div class="top-actions">
+    <button class="icon-btn" onclick="toggleFavorite(this)">♡</button>
+    <button class="icon-btn" onclick="shareStore()">⤴</button>
+  </div>
+</div>
+
+<a id="cart-icon" href="payment2.html">
+  🛒 <span id="cart-count">0</span>
+</a>
+
+<div class="content">
+  <div class="title">Makeup Deluxe - Punggol</div>
+  <div class="rating">⭐ 5.0 · 1.1 km away</div>
+
+  <div class="products">
+    <div class="product-box">
+      <img src="images/beauty1.jpg" alt="Bundled Haircare Kit">
+      <div class="product-content">
+        <div class="product-title">Bundled Haircare Kit</div>
+        <div class="product-time">Pickup 19:00 – 20:00</div>
+        <div class="price">$21.00</div>
+        <button class="view-btn">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-box">
+      <img src="images/beauty2.jpg" alt="Assorted Skincare Package">
+      <div class="product-content">
+        <div class="product-title">Assorted Skincare Package</div>
+        <div class="product-time">Pickup 19:00 – 20:00</div>
+        <div class="price">$23.00</div>
+        <button class="view-btn">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="reviews-section">
+    <div class="reviews-title">User Reviews</div>
+    <div class="reviews-container">
+      <div class="review">
+        <div class="review-header">
+          <span>Benjamin E.</span>
+          <span>⭐ 4.0</span>
+        </div>
+        <div class="review-meta">2 days ago</div>
+        Decent Quality Products.
+      </div>
+      <div class="review">
+        <div class="review-header">
+          <span>Charlie K.</span>
+          <span>⭐ 4.8</span>
+        </div>
+        <div class="review-meta">1 week ago</div>
+        Delivery was pretty smooth. Prices pretty cheap compared to online.
+      </div>
+      <div class="review">
+        <div class="review-header">
+          <span>Candice A.</span>
+          <span>⭐ 4.7</span>
+        </div>
+        <div class="review-meta">2 weeks ago</div>
+        Not bad price for what I received. Delivery was convenient. Like what they did with the new delivery option
+      </div>
+      <div class="review">
+        <div class="review-header">
+          <span>Pablo S.</span>
+          <span>⭐ 5.0</span>
+        </div>
+        <div class="review-meta">1 month ago</div>
+        Have to say this store's my new favorite beauty shop. Better prices than what I find online.
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function toggleFavorite(btn) {
+  btn.textContent = btn.textContent === "♡" ? "❤️" : "♡";
+}
+
+function shareStore() {
+  if (navigator.share) {
+    navigator.share({
+      title: "Thriftfind",
+      text: "Check out this thrift store!",
+      url: window.location.href
+    });
+  } else {
+    alert("Link copied (demo)");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  let cartCount = 0; 
+  const cartIcon = document.getElementById('cart-icon');
+  const cartNumber = document.getElementById('cart-count');
+
+  document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      cartCount++;
+      cartNumber.textContent = cartCount;
+      cartIcon.classList.add('show');
+      cartNumber.style.animation = 'pop 0.3s ease';
+      cartNumber.addEventListener('animationend', () => {
+        cartNumber.style.animation = '';
+      }, { once: true });
+    });
+  });
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
